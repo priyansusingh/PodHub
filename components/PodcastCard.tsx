@@ -19,6 +19,7 @@ const PodcastCard = ({title, description, imgURL, podcastid}:{
         <div className='flex flex-col'>
             <h1 className='text-16 truncate font-bold text-white-1'>{title}</h1>
             <h2 className='text-12 truncate font-normal capitalize text-white-4'>{description}</h2>
+            <p>{podcastid}</p>
         </div>
     </div>
   )
