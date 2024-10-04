@@ -13,8 +13,10 @@ const LeftSideBar = () => {
 
    const pathName = usePathname();
    const route = useRouter();
-
-  return (
+   
+   console.log(route)
+   
+   return (
    <section className='left_sidebar'>
     <nav className='flex flex-col gap-6'>
         <Link href="./" className='flex cursor-pointer items-center gap-1 pb-10 max-lg:justify-center'>
