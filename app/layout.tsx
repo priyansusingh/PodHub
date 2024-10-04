@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "TechCast",
+  title: "The Podcastr",
   description: "Generated your favourite tech podcast using AI",
   icons:{
     icon: '/icons/logo.svg'
