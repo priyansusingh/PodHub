@@ -14,7 +14,9 @@ const PodcastCard = ({title, description, imgURL, podcastid}:{
             src={imgURL} 
             height={250} 
             width={250} 
-            alt={title}/>
+            alt={title}
+            className='aspect-square h-fit
+            w-full rounded-xl 2xl:size-[200px]'/>
         </figure>
         <div className='flex flex-col'>
             <h1 className='text-16 truncate font-bold text-white-1'>{title}</h1>
