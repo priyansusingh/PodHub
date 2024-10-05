@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react"
-import { ConvexClientProvider } from "./providers/ConvexClientProvider";
+import  ConvexClerkProvider  from "./providers/ConvexClerkProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,7 +33,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ConvexClientProvider>{children}</ConvexClientProvider>
+        <ConvexClerkProvider>{
+        children}
+        </ConvexClerkProvider>
         <Analytics />
       </body>
     </html>
