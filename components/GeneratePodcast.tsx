@@ -1,24 +1,42 @@
 import { GeneratePodcastProps } from '@/types'
-import React, { useState } from 'react'
 import { Label } from './ui/label'
 import { Textarea } from './ui/textarea'
 import { Button } from './ui/button'
 import { Loader } from 'lucide-react'
+import { useState } from 'react'
 
+const useGeneratePodcast = ({setAudio, voiceType, voicePrompt, setAudioStorageId}:GeneratePodcastProps) =>{
+  const [isGenerating, setIsGenerating] = useState(false);
 
-const GeneratePodcast = (
-  {
-    setAudioStorageId,
-    setAudio,
-    voiceType,
-    audio,
-    voicePrompt,
-    setVoicePrompt,
-    setAudioDuration
-  }:GeneratePodcastProps
-) => {
+  const generatePodcast = async() =>{
+     setIsGenerating(true)
+     setAudio('')
+  
+     if(!voicePrompt){
+      //todo: show error messages
+      return setIsGenerating(false)
+     }
 
-  const [isGenerating, setisGenerating] = useState(false)
+     try{
+
+      // const response = await getPodcastAudio({
+      //   voice: voiceType,
+      //   input: voicePrompt
+      // })
+
+     }catch(error){
+      console.log('Error generating podcast', error)
+     }
+  }
+   
+  return {
+    isGenerating, generatePodcast
+  }
+}
+
+const GeneratePodcast = (props:GeneratePodcastProps) => {
+
+  const {isGenerating, generatePodcast} = useGeneratePodcast(props);
 
   return (
     <div>
@@ -30,8 +48,8 @@ const GeneratePodcast = (
         focus-visible:ring-offset-orange-1'
         placeholder='Provide prompt to generate podcast'
         rows={5}
-        value={voicePrompt}
-        onChange={(e)=> setVoicePrompt(e.target.value)}
+        value={props.voicePrompt}
+        onChange={(e)=> props.setVoicePrompt(e.target.value)}
         />
        </div>
 
@@ -50,13 +68,13 @@ const GeneratePodcast = (
         </Button>
        </div>
       {
-        audio &&
+        props.audio &&
         <audio
          controls
-         src={audio}
+         src={props.audio}
          autoPlay
          className='mt-5'
-         onLoadedMetadata={(e)=> setAudioDuration(e.currentTarget.duration)}
+         onLoadedMetadata={(e)=> props.setAudioDuration(e.currentTarget.duration)}
         />
       }
 
