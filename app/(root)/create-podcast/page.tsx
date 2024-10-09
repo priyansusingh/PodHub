@@ -4,9 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-
-
-
 // import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -56,6 +53,15 @@ const CreatePodcast = () =>{
       },
     })
    
+    console.log(setisSubmitting)
+    console.log(imagePrompt)
+    console.log(setImagePrompt)
+    console.log(audioStorageId)
+    console.log(audioDuration)
+    console.log(imageStorageId)
+    console.log(setImageStorageId)
+    console.log(imageUrl)
+    console.log(setImageUrl)
 
     function onSubmit(values: z.infer<typeof formSchema>) {
 
@@ -139,7 +145,8 @@ const CreatePodcast = () =>{
       setAudioDuration={setAudioDuration}
       />
       <GenerateThumbnail/>
-      
+      type VoiceType = 'male' | 'female' | 'robotic';
+
       <div className="mt-10 w-full">
         <Button type="submit" className="text-16 w-full bg-orange-1
         py-4 font-extrabold text-white-1 transition-all
