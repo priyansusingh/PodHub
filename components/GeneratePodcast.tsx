@@ -7,9 +7,9 @@ import { Loader } from 'lucide-react'
 import { useAction, useMutation } from 'convex/react'
 import { api } from '@/convex/_generated/api'
 import { v4 as uuidv4 } from 'uuid';
-import { useUploadFiles } from '@xixixao/uploadstuff/react';
-import { useToast } from '@/hooks/use-toast'
+import { useToast } from "@/components/ui/use-toast"
 
+import { useUploadFiles } from '@xixixao/uploadstuff/react';
 
 const useGeneratePodcast = ({
   setAudio, voiceType, voicePrompt, setAudioStorageId
@@ -44,6 +44,7 @@ const useGeneratePodcast = ({
       const blob = new Blob([response], { type: 'audio/mpeg' });
       const fileName = `podcast-${uuidv4()}.mp3`;
       const file = new File([blob], fileName, { type: 'audio/mpeg' });
+
       const uploaded = await startUpload([file]);
       const storageId = (uploaded[0].response as any).storageId;
 
@@ -56,6 +57,7 @@ const useGeneratePodcast = ({
         title: "Podcast generated successfully",
       })
     } catch (error) {
+      console.log(error)
       console.log('Error generating podcast', error)
       toast({
         title: "Error creating a podcast",
